@@ -41,3 +41,24 @@ rspec
 ```
 rails s -p 4000
 ```
+
+## API Endpoints
+* Metrics
+    - GET /metrics: Retrieve all metrics
+    - POST /metrics: Create a new metric
+        - Parameters: name (string, required)
+
+* Metric Records
+
+    - POST /metrics/id/metric_records: Create a new metric record for a specific metric
+        - Parameters: value (decimal, required), timestamp (datetime, required)
+
+* Averages
+  
+    - GET /metrics/id/averages: Retrieve average values for a specific metric
+        - Response format: json
+        {
+          "minute": [...],
+          "hour": [...],
+          "day": [...]
+        }

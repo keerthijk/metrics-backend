@@ -61,4 +61,6 @@ rails s -p 4000
           "minute": [...],
           "hour": [...],
           "day": [...]
-        }
+## Todos
+* To keep the challenge minimal I have not added Edit and Delete options for Metrics and MetricRecords.
+

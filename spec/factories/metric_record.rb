@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :metric_record do
     value { Faker::Number.between(from: 1, to: 100) }

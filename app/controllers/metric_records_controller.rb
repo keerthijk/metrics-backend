@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/api/metric_records_controller.rb
 class MetricRecordsController < ApplicationController
   def create

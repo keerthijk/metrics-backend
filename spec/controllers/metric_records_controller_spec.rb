@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe MetricRecordsController, type: :controller do
@@ -6,9 +8,9 @@ RSpec.describe MetricRecordsController, type: :controller do
   describe 'POST #create' do
     context 'with valid params' do
       it 'creates a new MetricRecord' do
-        expect {
+        expect do
           post :create, params: { metric_id: metric.id, metric_record: { value: 10, timestamp: Time.now } }
-        }.to change(MetricRecord, :count).by(1)
+        end.to change(MetricRecord, :count).by(1)
         expect(response).to have_http_status(:created)
       end
     end

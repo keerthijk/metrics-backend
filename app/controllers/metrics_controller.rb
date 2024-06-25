@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # app/controllers/metrics_controller.rb
 class MetricsController < ApplicationController
   def index

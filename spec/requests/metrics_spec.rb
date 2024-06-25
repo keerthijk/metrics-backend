@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # spec/requests/metrics_spec.rb
 require 'rails_helper'
 
@@ -16,9 +18,9 @@ RSpec.describe 'Metrics API', type: :request do # rubocop:disable Metrics/BlockL
 
   describe 'POST /metrics' do
     it 'creates a new metric' do
-      expect {
+      expect do
         post '/metrics', params: { metric: { name: 'Weight' } }
-      }.to change(Metric, :count).by(1)
+      end.to change(Metric, :count).by(1)
       expect(response).to have_http_status(:created)
     end
   end

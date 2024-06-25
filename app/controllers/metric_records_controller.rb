@@ -6,9 +6,9 @@ class MetricRecordsController < ApplicationController
     metric = Metric.find(params[:metric_id])
     record = metric.metric_records.build(metric_record_params)
     if record.save
-      render json: record, status: :created
+      render json: { message: 'Metric record created successfully', metric_record: record }, status: :created
     else
-      render json: record.errors, status: :unprocessable_entity
+      render json: { error: record.errors.full_messages.join(', ') }, status: :unprocessable_entity
     end
   end
 

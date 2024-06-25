@@ -2,6 +2,8 @@
 
 # app/controllers/metrics_controller.rb
 class MetricsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   def index
     metrics = Metric.all.includes(:metric_records)
     render json: metrics.to_json(include: :metric_records)
@@ -10,9 +12,9 @@ class MetricsController < ApplicationController
   def create
     metric = Metric.new(metric_params)
     if metric.save
-      render json: metric, status: :created
+      render json: { message: 'Metric created successfully', metric: }, status: :created
     else
-      render json: metric.errors, status: :unprocessable_entity
+      render json: { error: metric.errors.full_messages.join(', ') }, status: :unprocessable_entity
     end
   end
 
@@ -30,5 +32,9 @@ class MetricsController < ApplicationController
 
   def metric_params
     params.require(:metric).permit(:name)
+  end
+
+  def record_not_found
+    render json: { error: 'Metric not found' }, status: :not_found
   end
 end
